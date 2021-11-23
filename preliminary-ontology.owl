@@ -1,0 +1,1305 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY vann "http://purl.org/vocab/vann/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ontologyofspatialobject "http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#"
+     xml:base="http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject"
+     xmlns:ontologyofspatialobject="http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject">
+        <terms:license>http://creativecommons.org/licenses/by/3.0/</terms:license>
+        <vann:preferredNamespacePrefix>OntologyofSpatiaObject</vann:preferredNamespacePrefix>
+        <creators>Copyright © 2016 Manuel Puebla</creators>
+        <terms:description xml:lang="en">Descripción.</terms:description>
+        <terms:title xml:lang="en">Titulo</terms:title>
+        <vann:preferredNamespaceUri>http://purl.org/vocommons/voaf#OntologyofSpatiaObject#</vann:preferredNamespaceUri>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#creators -->
+
+    <owl:AnnotationProperty rdf:about="&ontologyofspatialobject;creators"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#license -->
+
+    <owl:AnnotationProperty rdf:about="&ontologyofspatialobject;license">
+        <rdfs:comment xml:lang="es">Por definir</rdfs:comment>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <rdf:Description rdf:about="&rdfs;comment">
+        <rdfs:comment xml:lang="en">This ontology is designed to model any geographical area.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#contains -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;contains">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">contains</rdfs:label>
+        <rdfs:comment xml:lang="en">Contains
+
+One geometry contains another if the other geometry is a subset of it and their interiors have at least one point in common. Contains is the inverse of Within.
+
+http://esri.github.io/geometry-api-java/doc/Contains.html</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;disjoint"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#crosses -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;crosses">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">crosses</rdfs:label>
+        <rdfs:comment xml:lang="en">Two polylines cross if they meet at points only, and at least one of the shared points is internal to both polylines. A polyline and polygon cross if a connected part of the polyline is partly inside and partly outside the polygon.
+
+http://esri.github.io/geometry-api-java/doc/Crosses.html</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;disjoint"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;equal"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#directional -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;directional">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">Directional</rdfs:label>
+        <rdfs:comment xml:lang="en">Directional relations</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;spatial"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#disjoint -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;disjoint">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">disjoint</rdfs:label>
+        <rdfs:comment xml:lang="en">Two geometries are disjoint if they don’t have any points in common. Disjoint is the inverse of Intersects. Disjoint is the most efficient operator and is guaranteed to work even on non-simple geometries.
+
+http://esri.github.io/geometry-api-java/doc/Disjoint.html</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;equal"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;inside"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;intersects"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;overlap"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;touches"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#equal -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;equal">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">equal</rdfs:label>
+        <rdfs:comment xml:lang="en">Two geometries are equal if they occupy the same space.
+
+http://esri.github.io/geometry-api-java/doc/Equals.html</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;overlap"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;touches"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#inside -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;inside">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">inside</rdfs:label>
+        <rdfs:comment xml:lang="en">One geometry is within another if it is a subset of the other geometry and their interiors have at least one point in common. Within is the inverse of Contains.
+
+
+Contenido en. En ocasiones se utiliza el término &quot;Within&quot;
+
+http://esri.github.io/geometry-api-java/doc/Within.html</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:inverseOf rdf:resource="&ontologyofspatialobject;contains"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#intersects -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;intersects">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">intersects</rdfs:label>
+        <rdfs:comment xml:lang="en">Two geometries intersect if they share at least one point in common. 
+
+http://esri.github.io/geometry-api-java/doc/Intersects.html</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isEastOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isEastOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isEastOf</rdfs:label>
+        <rdfs:comment xml:lang="es">is East Of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;directional"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;isWestOf"/>
+        <owl:inverseOf rdf:resource="&ontologyofspatialobject;isWestOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isFarOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isFarOf">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">isFarOf</rdfs:label>
+        <rdfs:comment xml:lang="en">Is far of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;isNearOf"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;proximity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isNearOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isNearOf">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">isNearOf</rdfs:label>
+        <rdfs:comment xml:lang="en">Is near of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;proximity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isNorthOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isNorthOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isNorthOf</rdfs:label>
+        <rdfs:comment xml:lang="es">is North of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;directional"/>
+        <owl:inverseOf rdf:resource="&ontologyofspatialobject;isSouthOf"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;isSouthOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isPartOf</rdfs:label>
+        <rdfs:comment xml:lang="es">is part of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <owl:inverseOf rdf:resource="&ontologyofspatialobject;isWholeOf"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;isWholeOf"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;mereological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isSouthOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isSouthOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isSouthOf</rdfs:label>
+        <rdfs:comment xml:lang="en">is South of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;directional"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isWestOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isWestOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isWestOf</rdfs:label>
+        <rdfs:comment xml:lang="en">is West of</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;directional"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#isWholeOf -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;isWholeOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">isWholeOf</rdfs:label>
+        <rdfs:comment xml:lang="es">is whole of</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;mereological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#mereological -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;mereological">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">Mereological</rdfs:label>
+        <rdfs:comment xml:lang="en">Mereological relations</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;spatial"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#overlap -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;overlap">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">overlap</rdfs:label>
+        <rdfs:comment xml:lang="es">Two geometries overlap if they have the same dimension, and their intersection also has the same dimension but is different from both of them. 
+
+Superposicion
+
+http://esri.github.io/geometry-api-java/doc/Overlaps.html</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#proximity -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;proximity">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">Proximity</rdfs:label>
+        <rdfs:comment xml:lang="en">proximity relations</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;spatial"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#spatial -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;spatial">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">Spatial</rdfs:label>
+        <rdfs:comment xml:lang="en">spatial relations</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#topological -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;topological">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">Topological</rdfs:label>
+        <rdfs:comment xml:lang="en">topological relations</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;spatial"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#touches -->
+
+    <owl:ObjectProperty rdf:about="&ontologyofspatialobject;touches">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">touches</rdfs:label>
+        <rdfs:comment xml:lang="en">Two geometries touch if the intersection of their interiors is empty, but the intersection of the two geometries is not empty.
+
+http://esri.github.io/geometry-api-java/doc/Touches.html</rdfs:comment>
+        <rdfs:range rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;topological"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminCode1 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminCode1">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminCode1</rdfs:label>
+        <rdfs:comment xml:lang="en">adminCode1: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminCode2 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminCode2">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminCode2</rdfs:label>
+        <rdfs:comment xml:lang="en">adminCode2: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminCode3 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminCode3">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminCode3</rdfs:label>
+        <rdfs:comment xml:lang="en">adminCode3: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminCode4 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminCode4">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminCode4</rdfs:label>
+        <rdfs:comment xml:lang="en">adminCode4: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminCode5 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminCode5">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminCode5</rdfs:label>
+        <rdfs:comment xml:lang="en">adminCode5: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminName1 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminName1">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminName1</rdfs:label>
+        <rdfs:comment xml:lang="en">adminName1: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminName2 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminName2">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminName2</rdfs:label>
+        <rdfs:comment xml:lang="en">adminName2: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminName3 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminName3">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminName3</rdfs:label>
+        <rdfs:comment xml:lang="en">adminName3: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminName4 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminName4">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminName4</rdfs:label>
+        <rdfs:comment xml:lang="en">adminName4: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#adminName5 -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;adminName5">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>adminName5</rdfs:label>
+        <rdfs:comment xml:lang="en">adminName5: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#alternateNames -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;alternateNames">
+        <rdfs:label>alternateNames</rdfs:label>
+        <rdfs:comment xml:lang="en">Stores the alternate names of place names in Geonames and OSM data
+
+Será utilizado también por OSM</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#boundingBox -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;boundingBox">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>boundingBox</rdfs:label>
+        <rdfs:comment xml:lang="en">A bounding box (usually shortened to bbox) is an area defined by two longitudes and two latitudes, where:
+
+    Latitude is a decimal number between -90.0 and 90.0.
+    Longitude is a decimal number between -180.0 and 180.0.
+
+They usually follow the standard format of:
+
+bbox = left,bottom,right,top
+bbox = min Longitude , min Latitude , max Longitude , max Latitude 
+
+
+is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <owl:propertyDisjointWith rdf:resource="&ontologyofspatialobject;name"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#continentCode -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;continentCode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>continentCode</rdfs:label>
+        <rdfs:comment xml:lang="en">continentCode: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#countryCode -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;countryCode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>countryCode</rdfs:label>
+        <rdfs:comment xml:lang="en">countryCode: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#countryName -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;countryName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>countryName</rdfs:label>
+        <rdfs:comment xml:lang="en">countryName: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#edbDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;edbDataProperty">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>edbDataProperty</rdfs:label>
+        <rdfs:comment xml:lang="es">Es para representar todas las dataproperty que se extraen de una base de datos. Todas son funcionales porque la BD está al menos en primera forma normal. Pero el rango no es posible expresarlo pues puede aparecer cualquiera de los tipos de datos.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#elevation -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;elevation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>elevation</rdfs:label>
+        <rdfs:comment xml:lang="en">the elevation in metres (optional may be null), parsed from the article or reverse geocoded.
+
+Es utilizada por Geonames y por Wikipedia</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#feature -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;feature">
+        <rdfs:label>feature</rdfs:label>
+        <rdfs:comment xml:lang="en">the wikipedia feature type. A list of types is available here: http://www.geonames.org/wikipedia/wikipedia_features.html</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#featureClass -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;featureClass">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>featureClass</rdfs:label>
+        <rdfs:comment xml:lang="en">character A,H,L,P,R,S,T,U,V
+
+Is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#featureClassName -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;featureClassName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>featureClassName</rdfs:label>
+        <rdfs:comment>featureClassName: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#featureCode -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;featureCode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>featureCode</rdfs:label>
+        <rdfs:comment xml:lang="en">featureCode: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#featureCodeName -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;featureCodeName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>featureCodeName</rdfs:label>
+        <rdfs:comment xml:lang="en">featureCodeName: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#geoNameId -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;geoNameId">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>geoNameId</rdfs:label>
+        <rdfs:comment xml:lang="en">geonameId: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#geonameDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;geonameDataProperty">
+        <rdfs:label>geonameDataProperty</rdfs:label>
+        <rdfs:comment xml:lang="en">Encapsulates the data properties Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#idOSM -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;idOSM">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>idOSM</rdfs:label>
+        <rdfs:comment xml:lang="es">Es el id de los objetos de OSM. Pudo haberse trabajado con el mismo dataproperty id de Geoname (geoNameId) pero no se hizo.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;osmDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;long"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#language -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;language">
+        <rdfs:label>language</rdfs:label>
+        <rdfs:comment xml:lang="en">ISO language code of article text</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#latitude -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;latitude">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>latitude</rdfs:label>
+        <rdfs:comment>It is used by Geonames, OSM and by Wikipedia</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#longitude -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;longitude">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>longitude</rdfs:label>
+        <rdfs:comment>It is used by Geonames, OSM and by Wikipedia</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#name -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;name">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>name</rdfs:label>
+        <rdfs:comment xml:lang="en">name
+
+Es utilizado por Geoanmes y la fuente &quot;Base de Datos&quot;, para el nombre de cada objeto espacial.
+
+is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#osmDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;osmDataProperty">
+        <rdfs:label>osmDataProperty</rdfs:label>
+        <rdfs:comment xml:lang="es">The OSM data properties
+
+Se reutilizan los siguientes dataproperty de Geoname: longitud, latitud</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#population -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;population">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>population</rdfs:label>
+        <rdfs:comment xml:lang="en">the population (optional may be null).
+
+Es utilizada por Geonames y por Wikipedia</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&xsd;long"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#rank -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;rank">
+        <rdfs:label>rank</rdfs:label>
+        <rdfs:comment xml:lang="en">indication of the popularity or relevancy of an article. The rank is an integer number from 1 for the least popular articles to 100 for the most popular articles. It is calculated from the number of links pointing to an article and the article length. The articles are more or less evenly distributed over the 100 ranks.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#style -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;style">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>style</rdfs:label>
+        <rdfs:comment xml:lang="en">style: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#summary -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;summary">
+        <rdfs:label>summary</rdfs:label>
+        <rdfs:comment xml:lang="en">a short summary of the article text. Around 300 chars. The text is truncated at a full stop if one is available near char 300, otherwise at the end of a word.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#taqs -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;taqs">
+        <rdfs:label>taqs</rdfs:label>
+        <rdfs:comment xml:lang="es">Es un par  formado de la siguiente forma: &quot;TaqsKey,TaqsValue&quot;. Si tiene varios taqs, como casi siempre, se repitirá este dataproperty em el individuo, es decir, este no es funcional.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;osmDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#thumbnailImg -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;thumbnailImg">
+        <rdfs:label>thumbnailImg</rdfs:label>
+        <rdfs:comment xml:lang="en">URL of a small thumbnail image</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#timezone -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;timezone">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>timezone</rdfs:label>
+        <rdfs:comment xml:lang="en">timezone: is a data property of Geonames</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;geonameDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#title -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;title">
+        <rdfs:label>title</rdfs:label>
+        <rdfs:comment xml:lang="en">The article title</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#type -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;type">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>type</rdfs:label>
+        <rdfs:comment xml:lang="es">Para saber si es un Nodo, una Relación o una Camino (Way)</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;osmDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#typeRelation -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;typeRelation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>typeRelation</rdfs:label>
+        <rdfs:comment xml:lang="es">Define el tipo de relación entre los elementos de la Relación</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;osmDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#wikipediaDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;wikipediaDataProperty">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>wikipediaDataProperty</rdfs:label>
+        <rdfs:comment>The Wikipedia data properties</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#wikipediaUrl -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;wikipediaUrl">
+        <rdfs:label>wikipediaUrl</rdfs:label>
+        <rdfs:comment xml:lang="en">URL of the article</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:subPropertyOf rdf:resource="&ontologyofspatialobject;wikipediaDataProperty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#wkt -->
+
+    <owl:DatatypeProperty rdf:about="&ontologyofspatialobject;wkt">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label>wkt</rdfs:label>
+        <rdfs:comment xml:lang="es">Representa la cadena WKT de los objetos. Se utiliza por todas las fuentes de datos.</rdfs:comment>
+        <rdfs:domain rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#AdministrativeBoundary -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;AdministrativeBoundary">
+        <rdfs:label xml:lang="en">AdministrativeBoundary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">An administrative boundary. Subdivisions of areas/territories/jurisdictions recognised by governments or other organisations for administrative purposes. These range from large groups of nation states right down to small administrative districts and suburbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Area -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Area">
+        <rdfs:label xml:lang="en">Area</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">L parks,area, ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Continent -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Continent">
+        <rdfs:label xml:lang="en">Continents</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;AdministrativeBoundary"/>
+        <rdfs:comment xml:lang="en">Any of the world&apos;s main continuous expanses of land (Africa, Antarctica, Asia, Australia, Europe, North America, South America).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Countries -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Countries">
+        <rdfs:label xml:lang="en">Countries</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;AdministrativeBoundary"/>
+        <rdfs:comment xml:lang="en">A nation with its own government, occupying a particular territory.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#GeonameConcept -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;GeonameConcept">
+        <rdfs:label xml:lang="en">GeonameConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;SpatialObject"/>
+        <rdfs:comment xml:lang="en">Concepts extracted from Geonames</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Hydrographic -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Hydrographic">
+        <rdfs:label xml:lang="en">Hydrographic</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">H stream, lake, ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Hypsographic -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Hypsographic">
+        <rdfs:label xml:lang="en">Hypsographic</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">A branch of geography that deals with the measurement and mapping of the topography of the earth above sea level.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#NortHemisphere -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;NortHemisphere">
+        <rdfs:label xml:lang="en">NorthHemisphere</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;AdministrativeBoundary"/>
+        <owl:disjointWith rdf:resource="&ontologyofspatialobject;SouthernHemisphere"/>
+        <rdfs:comment xml:lang="en">The half of the earth between the North Pole and the equator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#PopulatedPlace -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;PopulatedPlace">
+        <rdfs:label xml:lang="en">PopulatedPlace</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">P city, village,...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Road -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Road">
+        <rdfs:label xml:lang="en">Road</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">R road, railroad</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#SouthernHemisphere -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;SouthernHemisphere">
+        <rdfs:label xml:lang="en">SouthernHemisphere</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;AdministrativeBoundary"/>
+        <rdfs:comment xml:lang="en">The half of the earth between the South Pole and the equator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#SpatialObject -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;SpatialObject">
+        <rdfs:label xml:lang="en">SpatialObject</rdfs:label>
+        <rdfs:comment xml:lang="en">Spatial Object</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Spot -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Spot">
+        <rdfs:label xml:lang="en">Spot</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">S spot, building, farm</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Undersea -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Undersea">
+        <rdfs:label xml:lang="en">Undersea</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">below the sea or the surface of the sea.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mpuebla/ontologies/2015/8/OntologyOfSpatialObject#Vegetation -->
+
+    <owl:Class rdf:about="&ontologyofspatialobject;Vegetation">
+        <rdfs:label xml:lang="en">Vegetation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontologyofspatialobject;GeonameConcept"/>
+        <rdfs:comment xml:lang="en">All about the vegetation</rdfs:comment>
+    </owl:Class>
+    <rdf:Description>
+        <license>http://purl.org/NET/rdflicense/allrightsreserved</license>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode2"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode3"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode4"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode5"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;boundingBox"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;taqs"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;typeRelation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wikipediaUrl"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName3"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;elevation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;rank"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;thumbnailImg"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;timezone"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wikipediaUrl"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;countryName"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;elevation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;feature"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;featureClass"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;featureClassName"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;featureCodeName"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;language"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;name"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;rank"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;style"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;summary"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;taqs"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;thumbnailImg"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;timezone"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;title"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;type"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;typeRelation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wikipediaUrl"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;alternateNames"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;boundingBox"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;elevation"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode2"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode3"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode4"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode5"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName2"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName3"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName4"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName5"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;language"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;population"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;typeRelation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName4"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;elevation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;language"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;timezone"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;title"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;typeRelation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wikipediaUrl"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;featureCode"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;featureCodeName"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;geoNameId"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;latitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;longitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;timezone"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName5"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;elevation"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;language"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;latitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;longitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;rank"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;summary"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;thumbnailImg"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wikipediaUrl"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;wkt"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode2"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode3"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode4"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminCode5"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName1"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;adminName2"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;alternateNames"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;continentCode"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;countryCode"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;idOSM"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;language"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;latitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;longitude"/>
+            <rdf:Description rdf:about="&ontologyofspatialobject;timezone"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
